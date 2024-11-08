@@ -1,10 +1,10 @@
 package com.divine.news.data.repository
 
+import com.divine.common.di.Result
+import com.divine.news.data.model.Article
 import com.divine.news.data.source.NewsRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import com.divine.common.di.Result
-import com.divine.news.data.model.Article
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(

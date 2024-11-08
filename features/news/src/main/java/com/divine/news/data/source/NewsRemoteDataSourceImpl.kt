@@ -9,7 +9,7 @@ import java.io.IOException
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class NewsRemoteDataSourceImpl  @Inject constructor(
+class NewsRemoteDataSourceImpl @Inject constructor(
     private val service: NewsService,
     @IO private val context: CoroutineContext
 ) : NewsRemoteDataSource {

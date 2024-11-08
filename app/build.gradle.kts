@@ -48,6 +48,8 @@ android {
 dependencies {
 
     implementation(project(":common"))
+    implementation(project(":features:home"))
+    implementation(project(":features:news"))
 
     //hilt
     implementation(libs.hilt.android)
