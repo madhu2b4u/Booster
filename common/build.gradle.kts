@@ -39,41 +39,27 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
+
+    packaging {
+        resources {
+            merges += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.bundles.androidx.core)
+    implementation(libs.bundles.androidx.compose.ui)
+    implementation(libs.bundles.hilt)
+    implementation(libs.bundles.networking)
 
+    // Compose BOM and other dependencies
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    //hilt
-
-    implementation(libs.hilt.android)
-    kapt (libs.hilt.android.compiler)
-    kaptAndroidTest(libs.hilt.android.compiler.v244)
-    testImplementation(libs.hilt.android.testing)
-    implementation (libs.androidx.hilt.navigation.compose)
-    androidTestImplementation(libs.hilt.android.testing)
-
-
-    //retrofit libraries for network calls
-    implementation(libs.retrofit)
-    implementation(libs.retrofit2.kotlin.coroutines.adapter)
-    implementation(libs.logging.interceptor)
-    implementation(libs.adapter.rxjava)
-    implementation(libs.converter.gson)
-    implementation(libs.gson)
-    testImplementation(libs.junit.jupiter)
-    testImplementation(libs.mockwebserver)
-
-    testImplementation(libs.junit)
-
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
 }

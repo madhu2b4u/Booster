@@ -44,6 +44,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
+    packaging {
+        resources {
+            merges += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
+
+
 }
 
 dependencies {
@@ -51,19 +58,16 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":features:home"))
 
-    //hilt
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.junit.ktx)
-    implementation(libs.androidx.navigation.compose)
-    testImplementation(libs.hilt.android.testing)
-    kapt (libs.hilt.android.compiler)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    // Include bundles
+    implementation(libs.bundles.androidx.core)
+    implementation(libs.bundles.androidx.compose.ui)
+    implementation(libs.bundles.hilt)
+
+    // Compose BOM and other dependencies
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation (libs.androidx.hilt.navigation.compose)
+
 }
