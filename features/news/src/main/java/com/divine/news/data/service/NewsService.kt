@@ -1,7 +1,7 @@
 package com.divine.news.data.service
 
 import com.divine.common.di.API_KEY
-import com.divine.news.data.model.NewsResponse
+import com.divine.common.models.NewsResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET

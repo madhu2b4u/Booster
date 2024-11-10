@@ -84,7 +84,6 @@ internal fun HomeScreen(
     navController: NavHostController = rememberNavController(),
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
-    onNavigateToNews: () -> Unit
 ) {
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -102,9 +101,9 @@ internal fun HomeScreen(
     ) {
         NavHost(navController = navController, startDestination = newsRoute) {
 
-            newsScreen(drawerState, onNavigateToNews)
+            newsScreen(drawerState,navController)
 
-            headLinesScreen(drawerState)
+            headLinesScreen(drawerState, navController)
 
         }
     }

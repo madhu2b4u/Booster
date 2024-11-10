@@ -6,12 +6,8 @@ import com.divine.home.HomeScreen
 
 const val homeRoute = "home"
 
-fun NavGraphBuilder.homeScreen(
-    onNavigateToNews: () -> Unit
-) {
+fun NavGraphBuilder.homeScreen(function: () -> Boolean) {
     composable(homeRoute) {
-        HomeScreen(
-            onNavigateToNews = onNavigateToNews
-        )
+        HomeScreen()
     }
 }

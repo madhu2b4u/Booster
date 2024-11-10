@@ -3,7 +3,7 @@ package com.divine.headlines.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.divine.common.di.Result
-import com.divine.headlines.data.model.Article
+import com.divine.common.models.Article
 import com.divine.headlines.domain.HeadlinesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

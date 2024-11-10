@@ -3,7 +3,7 @@ package com.divine.news.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.divine.common.di.Result
-import com.divine.news.data.model.Article
+import com.divine.common.models.Article
 import com.divine.news.domain.NewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,7 +25,7 @@ class NewsViewModel @Inject constructor(
         fetchNews()
     }
 
-    private fun fetchNews() {
+    fun fetchNews() {
         viewModelScope.launch {
             try {
                 newsUseCase.getNews()

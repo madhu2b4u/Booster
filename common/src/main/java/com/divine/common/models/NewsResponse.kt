@@ -1,4 +1,4 @@
-package com.divine.news.data.model
+package com.divine.common.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

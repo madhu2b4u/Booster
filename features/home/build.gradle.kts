@@ -9,10 +9,10 @@ plugins {
 
 android {
     namespace = "com.divine.home"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,13 +30,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = libs.versions.jvmTarget.get()
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 }
 
@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.junit.ktx)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.ui.test.junit4.android)
     testImplementation(libs.androidx.core.testing)
     annotationProcessor(libs.androidx.room.compiler)
     kapt(libs.androidx.room.compiler)
@@ -113,4 +114,5 @@ dependencies {
     implementation(libs.gson)
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.mockwebserver)
+
 }

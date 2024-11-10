@@ -21,15 +21,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.divine.common.CustomAppBar
 import com.divine.common.di.Status
-import com.divine.headlines.data.model.Article
+import com.divine.common.models.Article
 import com.divine.headlines.presentation.viewmodel.HeadlinesViewModel
+import com.divine.newsdetails.nav.navigateToNewsDetails
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun HeadlinesScreen(
     drawerState: DrawerState,
-) {
+    navController: NavHostController,
+    ) {
     val viewModel: HeadlinesViewModel = hiltViewModel()
 
     val newsState by viewModel.headlinesNews.collectAsState()
@@ -67,12 +72,8 @@ fun HeadlinesScreen(
                             ) { index ->
                                 val article = it[index]
                                 NewsItem(article = article) {
-                                    /*navController.navigate(
-                                        NavigationItem.PostDetails.createRoute(
-                                            article.id,
-                                            article.title
-                                        )
-                                    )*/
+                                    val encodedUrl = URLEncoder.encode(article.url, StandardCharsets.UTF_8.toString())
+                                    navController.navigateToNewsDetails(encodedUrl)
                                 }
                             }
                         }

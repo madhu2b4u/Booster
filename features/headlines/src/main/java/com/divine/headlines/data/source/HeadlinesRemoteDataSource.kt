@@ -1,6 +1,6 @@
 package com.divine.headlines.data.source
 
-import com.divine.headlines.data.model.Article
+import com.divine.common.models.Article
 
 interface HeadlinesRemoteDataSource {
 

@@ -9,10 +9,10 @@ plugins {
 
 android {
     namespace = "com.divine.headlines"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,27 +30,25 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = libs.versions.jvmTarget.get()
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 }
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":features:newsdetails"))
 
     //hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.junit.ktx)
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.runtime)
-    testImplementation(libs.androidx.core.testing)
-    annotationProcessor(libs.androidx.room.compiler)
     kapt(libs.androidx.room.compiler)
+    testImplementation(libs.androidx.core.testing)
     implementation(libs.androidx.navigation.compose)
     testImplementation(libs.hilt.android.testing)
     kapt(libs.hilt.android.compiler)

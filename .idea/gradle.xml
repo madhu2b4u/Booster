@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/features/headlines" />
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/features/news" />
+            <option value="$PROJECT_DIR$/features/newsdetails" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
