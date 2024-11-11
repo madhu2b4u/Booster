@@ -25,33 +25,34 @@ class NewsUseCaseTest {
     }
 
     @Test
-    fun `getNews calls repository and returns success result when news articles are loaded`() = runTest {
-        // Arrange
-        val articles = mutableListOf(
-            Article(
-                author = "Nikki Birrell",
-                content = "Paella content...",
-                description = "Discover the steps to creating a flavour-packed paella.",
-                publishedAt = "2024-11-08T23:00:00Z",
-                source = Source(id = "1", name = "New Zealand Herald"),
-                title = "How to make the perfect paella",
-                url = "https://example.com",
-                urlToImage = "https://example.com/image.jpg"
+    fun `getNews calls repository and returns success result when news articles are loaded`() =
+        runTest {
+            // Arrange
+            val articles = mutableListOf(
+                Article(
+                    author = "Nikki Birrell",
+                    content = "Paella content...",
+                    description = "Discover the steps to creating a flavour-packed paella.",
+                    publishedAt = "2024-11-08T23:00:00Z",
+                    source = Source(id = "1", name = "New Zealand Herald"),
+                    title = "How to make the perfect paella",
+                    url = "https://example.com",
+                    urlToImage = "https://example.com/image.jpg"
+                )
             )
-        )
-        val expectedResult = Result.success(articles)
+            val expectedResult = Result.success(articles)
 
-        coEvery { repository.getNews() } returns flow { emit(expectedResult) }
+            coEvery { repository.getNews() } returns flow { emit(expectedResult) }
 
-        // Act
-        val result = newsUseCase.getNews()
+            // Act
+            val result = newsUseCase.getNews()
 
-        // Assert
-        result.collect { res ->
-            assertEquals(expectedResult, res)
+            // Assert
+            result.collect { res ->
+                assertEquals(expectedResult, res)
+            }
+            coVerify(exactly = 1) { repository.getNews() }
         }
-        coVerify(exactly = 1) { repository.getNews() }
-    }
 
     @Test
     fun `getNews calls repository and returns error result when an exception occurs`() = runTest {

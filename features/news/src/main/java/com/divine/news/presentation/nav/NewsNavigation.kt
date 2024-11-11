@@ -17,7 +17,7 @@ fun NavGraphBuilder.newsScreen(
     composable(newsRoute) {
         NewsScreen(
             drawerState = drawerState,
-            navController=navController,
+            navController = navController,
         )
     }
 

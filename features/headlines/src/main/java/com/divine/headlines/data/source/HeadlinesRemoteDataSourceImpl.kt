@@ -2,7 +2,6 @@ package com.divine.headlines.data.source
 
 import com.divine.common.di.qualifiers.IO
 import com.divine.common.exception.NoDataException
-import com.divine.headlines.data.source.HeadlinesRemoteDataSource
 import com.divine.headlines.data.service.HeadlinesService
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

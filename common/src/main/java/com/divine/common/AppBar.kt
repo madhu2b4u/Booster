@@ -30,7 +30,7 @@ fun CustomAppBar(drawerState: DrawerState? = null, title: String) {
                     Icon(Icons.Filled.Menu, contentDescription = "")
                 }
             }
-                         },
+        },
         title = { Text(text = title) }
     )
 }
@@ -39,8 +39,8 @@ fun CustomAppBar(drawerState: DrawerState? = null, title: String) {
 @Preview(widthDp = 300)
 @Composable
 fun PreviewCustomAppBar() {
-     BoosterTheme {
-         CustomAppBar(drawerState = null, title = "Title")
-     }
+    BoosterTheme {
+        CustomAppBar(drawerState = null, title = "Title")
+    }
 
 }

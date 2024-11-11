@@ -1,14 +1,11 @@
 package com.divine.headlines.presentation.screens
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.MaterialTheme
@@ -19,12 +16,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.divine.common.CustomAppBar
 import com.divine.common.di.Status
-import com.divine.common.models.Article
+import com.divine.common.ui.NewsItem
 import com.divine.headlines.presentation.viewmodel.HeadlinesViewModel
 import com.divine.newsdetails.nav.navigateToNewsDetails
 import java.net.URLEncoder
@@ -34,7 +30,7 @@ import java.nio.charset.StandardCharsets
 fun HeadlinesScreen(
     drawerState: DrawerState,
     navController: NavHostController,
-    ) {
+) {
     val viewModel: HeadlinesViewModel = hiltViewModel()
 
     val newsState by viewModel.headlinesNews.collectAsState()
@@ -72,7 +68,10 @@ fun HeadlinesScreen(
                             ) { index ->
                                 val article = it[index]
                                 NewsItem(article = article) {
-                                    val encodedUrl = URLEncoder.encode(article.url, StandardCharsets.UTF_8.toString())
+                                    val encodedUrl = URLEncoder.encode(
+                                        article.url,
+                                        StandardCharsets.UTF_8.toString()
+                                    )
                                     navController.navigateToNewsDetails(encodedUrl)
                                 }
                             }
@@ -81,24 +80,12 @@ fun HeadlinesScreen(
                 }
 
                 Status.ERROR -> {
-                    Text(text = "Error: ${newsState.message}", color = MaterialTheme.colorScheme.error)
+                    Text(
+                        text = "Error: ${newsState.message}",
+                        color = MaterialTheme.colorScheme.error
+                    )
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun NewsItem(article: Article, onClick: () -> Unit) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .clickable(onClick = onClick)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = article.title, style = MaterialTheme.typography.titleMedium)
-            Text(text = article.description, style = MaterialTheme.typography.bodyMedium)
         }
     }
 }

@@ -101,7 +101,7 @@ internal fun HomeScreen(
     ) {
         NavHost(navController = navController, startDestination = newsRoute) {
 
-            newsScreen(drawerState,navController)
+            newsScreen(drawerState, navController)
 
             headLinesScreen(drawerState, navController)
 

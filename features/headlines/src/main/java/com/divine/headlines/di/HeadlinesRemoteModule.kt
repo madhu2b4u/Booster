@@ -1,7 +1,7 @@
 package com.divine.headlines.di
 
-import com.divine.headlines.data.source.HeadlinesRemoteDataSource
 import com.divine.headlines.data.service.HeadlinesService
+import com.divine.headlines.data.source.HeadlinesRemoteDataSource
 import com.divine.headlines.data.source.HeadlinesRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module

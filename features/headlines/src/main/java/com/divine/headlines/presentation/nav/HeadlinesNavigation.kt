@@ -11,11 +11,11 @@ const val headLinesRoute = "headlines"
 fun NavGraphBuilder.headLinesScreen(
     drawerState: DrawerState,
     navController: NavHostController,
-    ) {
+) {
     composable(headLinesRoute) {
         HeadlinesScreen(
             drawerState = drawerState,
-            navController= navController
+            navController = navController
         )
     }
 

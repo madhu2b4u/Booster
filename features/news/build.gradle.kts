@@ -50,8 +50,8 @@ dependencies {
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.networking)
     testImplementation(libs.bundles.testing)
+    testImplementation(libs.androidx.core.testing)
     androidTestImplementation(libs.bundles.testing)
-
 
     // Compose BOM and other dependencies
     implementation(platform(libs.androidx.compose.bom))
