@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
@@ -34,6 +35,8 @@ import com.divine.headlines.presentation.nav.headLinesRoute
 import com.divine.headlines.presentation.nav.headLinesScreen
 import com.divine.news.presentation.nav.newsRoute
 import com.divine.news.presentation.nav.newsScreen
+import com.divine.user.nav.userRoute
+import com.divine.user.nav.userScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -42,6 +45,7 @@ private data class DrawerMenu(val icon: ImageVector, val title: String, val rout
 private val menus = arrayOf(
     DrawerMenu(Icons.Filled.Home, "News", newsRoute),
     DrawerMenu(Icons.Default.Create, "Headlines", headLinesRoute),
+    DrawerMenu(Icons.Default.Face, "User", userRoute),
 )
 
 @Composable
@@ -104,6 +108,8 @@ internal fun HomeScreen(
             newsScreen(drawerState, navController)
 
             headLinesScreen(drawerState, navController)
+            headLinesScreen(drawerState, navController)
+            userScreen(drawerState,navController)
 
         }
     }
