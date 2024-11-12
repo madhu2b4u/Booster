@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
-    kotlin("kapt")
+    id("kotlin-kapt")
     id("kotlin-parcelize")
 }
 
@@ -47,17 +47,16 @@ android {
     packaging {
         resources {
             merges += "META-INF/gradle/incremental.annotation.processors"
+            excludes += "META-INF/gradle/incremental.annotation.processors"
         }
     }
-
-
 }
 
 dependencies {
 
     implementation(project(":common"))
     implementation(project(":features:home"))
-
+    kapt(libs.hilt.compiler)
     // Include bundles
     implementation(libs.bundles.androidx.core)
     implementation(libs.bundles.androidx.compose.ui)

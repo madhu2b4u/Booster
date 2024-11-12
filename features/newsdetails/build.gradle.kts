@@ -37,9 +37,18 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
+
+    packaging {
+        resources {
+            merges += "META-INF/gradle/incremental.annotation.processors"
+            excludes += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
+
 }
 
 dependencies {
+    kapt(libs.hilt.compiler)
     implementation(libs.bundles.androidx.core)
     implementation(libs.bundles.androidx.compose.ui)
     implementation(libs.bundles.hilt)

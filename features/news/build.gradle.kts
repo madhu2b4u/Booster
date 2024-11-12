@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
+    id("kotlin-kapt")
     id("kotlin-parcelize")
 }
 
@@ -39,11 +39,20 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
+
+    packaging {
+        resources {
+            merges += "META-INF/gradle/incremental.annotation.processors"
+            excludes += "META-INF/gradle/incremental.annotation.processors"
+        }
+    }
+
 }
 
 dependencies {
     implementation(project(":common"))
     implementation(project(":features:newsdetails"))
+    kapt(libs.hilt.compiler)
 
     implementation(libs.bundles.androidx.core)
     implementation(libs.bundles.androidx.compose.ui)

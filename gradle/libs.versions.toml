@@ -7,6 +7,7 @@ core = "1.6.1"
 coreTesting = "2.2.0"
 gson = "2.10.1"
 hiltAndroidCompilerVersion = "2.48.1"
+hiltCompiler = "2.48.1"
 hiltNavigationCompose = "1.2.0"
 junitJupiter = "5.9.2"
 kotlin = "2.0.0"
@@ -71,6 +72,7 @@ androidx-material3-jvmstubs = { group = "androidx.compose.material3", name = "ma
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilNetworkOkhttp" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Networking
