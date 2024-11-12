@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.divine.user"
+    namespace = "com.divine.profile"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -40,7 +40,9 @@ android {
 }
 
 dependencies {
+
     implementation(project(":common"))
+    implementation(project(":features:user"))
     kapt(libs.hilt.compiler)
 
     implementation(libs.bundles.androidx.core)

@@ -1,7 +1,6 @@
 package com.divine.user.domain
-/*
 
-import com.divine.common.repository.UserRepository
+import com.divine.common.UserRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +17,3 @@ abstract class UserModule {
         userRepositoryImpl: UserRepositoryImpl
     ): UserRepository
 }
-*/
