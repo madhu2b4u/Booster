@@ -52,6 +52,7 @@ dependencies {
     implementation(project(":features:news"))
     implementation(project(":features:headlines"))
     implementation(project(":features:user"))
+    implementation(project(":features:profile"))
     kapt(libs.hilt.compiler)
 
     implementation(libs.bundles.androidx.core)
