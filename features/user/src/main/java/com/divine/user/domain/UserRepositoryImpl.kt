@@ -9,7 +9,9 @@ import javax.inject.Singleton
 class UserRepositoryImpl @Inject constructor() : UserRepository {
 
     override fun getUserInfo(): UserInfo {
-        return UserInfo(id = "123", name = "John Doe", email = "john.doe@example.com",
-            address =  "")
+        return UserInfo(
+            id = "123", name = "John Doe", email = "john.doe@example.com",
+            address = ""
+        )
     }
 }

@@ -113,8 +113,8 @@ internal fun HomeScreen(
 
             headLinesScreen(drawerState, navController)
             headLinesScreen(drawerState, navController)
-            userScreen(drawerState,navController)
-            profileScreen(drawerState,navController)
+            userScreen(drawerState, navController)
+            profileScreen(drawerState, navController)
 
         }
     }

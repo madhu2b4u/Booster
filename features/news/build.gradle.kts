@@ -57,6 +57,11 @@ dependencies {
     implementation(libs.bundles.androidx.core)
     implementation(libs.bundles.androidx.compose.ui)
     implementation(libs.bundles.hilt)
+    implementation("androidx.room:room-runtime:2.5.0") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    kapt("androidx.room:room-compiler:2.5.0")
+
     implementation(libs.bundles.networking)
     testImplementation(libs.bundles.testing)
     testImplementation(libs.androidx.core.testing)
@@ -68,4 +73,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+}
+
+configurations.all {
+    resolutionStrategy {
+        // Force the newer annotations version to avoid conflicts
+        force("org.jetbrains:annotations:23.0.0")
+    }
 }

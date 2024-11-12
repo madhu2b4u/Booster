@@ -18,8 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.divine.common.CustomAppBar
 import com.divine.common.di.Status
+import com.divine.common.ui.CustomAppBar
 import com.divine.common.ui.NewsItem
 import com.divine.news.presentation.viewmodel.NewsViewModel
 import com.divine.newsdetails.nav.navigateToNewsDetails

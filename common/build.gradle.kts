@@ -54,6 +54,11 @@ dependencies {
     implementation(libs.bundles.androidx.compose.ui)
     implementation(libs.bundles.hilt)
     implementation(libs.bundles.networking)
+    implementation("androidx.room:room-runtime:2.5.0") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    kapt("androidx.room:room-compiler:2.5.0")
+
 
     // Compose BOM and other dependencies
     implementation(platform(libs.androidx.compose.bom))
@@ -63,6 +68,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-
-
 }
+
+configurations.all {
+    resolutionStrategy {
+        // Force the newer annotations version to avoid conflicts
+        force("org.jetbrains:annotations:23.0.0")
+    }
+}
+

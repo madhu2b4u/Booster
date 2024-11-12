@@ -1,4 +1,4 @@
-package com.divine.common
+package com.divine.common.ui
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
