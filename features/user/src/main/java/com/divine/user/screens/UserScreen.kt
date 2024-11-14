@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,24 +15,33 @@ import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.ModalBottomSheetDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import coil3.compose.AsyncImage
 import com.divine.common.ui.CustomAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserScreen(drawerState: DrawerState, navController: NavHostController) {
     var showModalBottomSheet by remember { mutableStateOf(false) }
-    var currentStep by remember { mutableStateOf(1) }
+    var currentStep by remember { mutableIntStateOf(1) }
+
+    val bottomSheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = false
+    )
 
     Scaffold(
         topBar = { CustomAppBar(drawerState = drawerState, title = "User Info") }
@@ -43,12 +54,14 @@ fun UserScreen(drawerState: DrawerState, navController: NavHostController) {
             verticalArrangement = Arrangement.Center
         ) {
             Button(onClick = { showModalBottomSheet = true }) {
-                Text("Show Bottom Sheet")
+                Text("Click Me!")
             }
 
             if (showModalBottomSheet) {
                 ModalBottomSheet(
-                    onDismissRequest = { showModalBottomSheet = false }
+                    modifier = Modifier.fillMaxSize(),
+                    onDismissRequest = { showModalBottomSheet = false },
+                    sheetState = bottomSheetState
                 ) {
                     when (currentStep) {
                         1 -> StepOneContent(
@@ -74,6 +87,7 @@ fun StepOneContent(onNextClicked: () -> Unit, onCloseClicked: () -> Unit) {
         description = "This is the first step in the bottom sheet.",
         onPreviousClicked = null,
         onNextClicked = onNextClicked,
+        imageUrl = "https://i0.wp.com/picjumbo.com/wp-content/uploads/gorgeous-sunset-over-the-sea-free-image.jpeg?h=800&quality=80",
         onCloseClicked = onCloseClicked
     )
 }
@@ -85,6 +99,7 @@ fun StepTwoContent(onPreviousClicked: () -> Unit, onCloseClicked: () -> Unit) {
         description = "This is the second step in the bottom sheet.",
         onPreviousClicked = onPreviousClicked,
         onNextClicked = null,
+        imageUrl = "https://i0.wp.com/picjumbo.com/wp-content/uploads/silhouette-of-a-guy-with-a-cap-at-red-sky-sunset-free-image.jpeg?h=800&quality=80",
         onCloseClicked = onCloseClicked
     )
 }
@@ -93,6 +108,7 @@ fun StepTwoContent(onPreviousClicked: () -> Unit, onCloseClicked: () -> Unit) {
 fun StepContent(
     title: String,
     description: String,
+    imageUrl: String,
     onPreviousClicked: (() -> Unit)? = null,
     onNextClicked: (() -> Unit)? = null,
     onCloseClicked: () -> Unit
@@ -105,6 +121,17 @@ fun StepContent(
         Text(title, style = MaterialTheme.typography.bodyLarge)
         Spacer(modifier = Modifier.height(8.dp))
         Text(description)
+        Spacer(modifier = Modifier.height(8.dp))
+
+        AsyncImage(
+            model = imageUrl,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.8f), // Image takes 80% of the height
+            contentScale = ContentScale.Crop
+        )
+
         Spacer(modifier = Modifier.height(16.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),

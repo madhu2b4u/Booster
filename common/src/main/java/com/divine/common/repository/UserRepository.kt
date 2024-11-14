@@ -1,4 +1,4 @@
-package com.divine.common
+package com.divine.common.repository
 
 import com.divine.common.models.UserInfo
 

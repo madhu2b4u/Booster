@@ -1,6 +1,6 @@
 package com.divine.profile.domain
 
-import com.divine.common.UserRepository
+import com.divine.common.repository.UserRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

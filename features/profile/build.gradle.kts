@@ -42,7 +42,6 @@ android {
 dependencies {
 
     implementation(project(":common"))
-    implementation(project(":features:user"))
     kapt(libs.hilt.compiler)
 
     implementation(libs.bundles.androidx.core)
